@@ -1,0 +1,15 @@
+@import './config/reset.scss';
+@import './partials/header.scss';
+@import './partials/featureBar.scss';
+@import './partials/functionBar.scss';
+@import './partials/shell.scss';
+
+main {
+  position: absolute;
+  top: 167px;
+  z-index: -1;
+}
+
+* {
+  box-sizing: border-box;
+}

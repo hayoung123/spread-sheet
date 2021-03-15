@@ -1,0 +1,25 @@
+{
+  "name": "fe-w6-free-style",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayoung123/fe-w6-free-style.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hayoung123/fe-w6-free-style/issues"
+  },
+  "homepage": "https://github.com/hayoung123/fe-w6-free-style#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "sass": "^1.32.8"
+  }
+}

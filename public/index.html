@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spread Sheet</title>
+    <link rel="stylesheet" href="./src/css/style.scss" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__menu-container">
+        <div class="header__logo"><i class="far fa-file-excel"></i></div>
+        <div class="header__info-container">
+          <div class="header__title">Kyle의 스프레드시트</div>
+          <div class="header__menu-bar">
+            <div class="header__menu">파일</div>
+            <div class="header__menu">수정</div>
+            <div class="header__menu">보기</div>
+            <div class="header__menu">삽입</div>
+            <div class="header__menu">서식</div>
+            <div class="header__menu">데이터</div>
+            <div class="header__menu">도구</div>
+            <div class="header__menu">부가기능</div>
+            <div class="header__menu">도움말</div>
+          </div>
+        </div>
+        <div class="header__nav">
+          <div class="nav-btn btn-comment"><i class="far fa-comment"></i></div>
+          <div class="nav-btn btn-share"><i class="fas fa-lock"></i> 공유</div>
+          <div class="nav-btn btn-user"><i class="far fa-user"></i></div>
+        </div>
+      </div>
+      <div class="feature-bar">
+        <div class="feature-bar__list font-feature">
+          <div class="feature__item bold"><i class="fas fa-bold"></i></div>
+          <div class="feature__item italic"><i class="fas fa-italic"></i></div>
+          <div class="feature__item strikethrough"><i class="fas fa-strikethrough"></i></div>
+          <div class="feature__item color"><i class="fas fa-paint-brush"></i></div>
+        </div>
+        <div class="divider"></div>
+        <div class="feature-bar__list shell-feature">
+          <div class="feature__item color"><i class="fas fa-fill"></i></div>
+          <div class="feature__item border"><i class="fas fa-border-all"></i></div>
+        </div>
+      </div>
+      <div class="function-bar">
+        <div class="namebox">test</div>
+        <div class="function-box">
+          <span>fx</span>
+          <div class="divider"></div>
+          <input type="text" />
+        </div>
+      </div>
+    </header>
+    <main>
+      <table id="sheet"></table>
+    </main>
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>

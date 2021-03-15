@@ -1,0 +1,38 @@
+.function-bar {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  .namebox {
+    font-size: 1.1rem;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    padding-left: 10px;
+    margin-right: 15px;
+  }
+  .function-box {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    .divider {
+      width: 1px;
+      height: 20px;
+      background-color: #e3e3e3;
+    }
+    span {
+      display: block;
+      font-size: 1.3rem;
+      color: rgba(0, 0, 0, 0.3);
+      padding-right: 13px;
+    }
+    input {
+      width: 100%;
+      border: none;
+      margin-left: 10px;
+    }
+  }
+}
