@@ -11,10 +11,11 @@ class SheetView {
   constructor(sheet) {
     this.sheet = sheet;
     this.sheetModel = new SheetModel();
-    this.selectSheet = new Select(sheet);
+    this.selectSheet;
   }
   init() {
     this.render();
+    this.selectSheet = new Select(this.sheet, this.sheetModel);
   }
   _makeColumnIndex() {
     const columnIndexList = this.sheetModel
@@ -24,9 +25,11 @@ class SheetView {
     const columnIndxHTML = tr({ value: columnIndexList, classes: ['column-index'] });
     return columnIndxHTML;
   }
-  _makeRowSheet(arr) {
+  _makeRowSheet(arr, row) {
     const rowSheet = arr
-      .map((value, idx) => (idx ? makeShellHTML() : makeRowIndexHTML(value)))
+      .map((value, column) =>
+        column ? makeShellHTML({ x: column, y: row }) : makeRowIndexHTML(value)
+      )
       .reduce(add, '');
     const rowSheetHTML = tr({ value: rowSheet });
     return rowSheetHTML;
@@ -35,7 +38,7 @@ class SheetView {
     const sheetHTML = this.sheetModel
       .getSheetData()
       .slice(1)
-      .map((rowData) => this._makeRowSheet(rowData));
+      .map((rowData, row) => this._makeRowSheet(rowData, row + 1));
     return sheetHTML.join('');
   }
   render() {

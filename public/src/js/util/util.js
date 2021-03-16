@@ -5,6 +5,9 @@ export const _ = {
   $All: function (selector, base = document) {
     return base.querySelectorAll(selector);
   },
+  $td({ x, y }, selector) {
+    return this.$(`td[x="${x}"][y="${y}"]`, selector);
+  },
 };
 
 export const getData = (url) => fetch(url).then((res) => res.json());
