@@ -21,10 +21,10 @@ td {
     cursor: default;
   }
 }
-td:not(.column-index):focus-within,
-td:not(.row-index):focus-within {
-  border: 2px solid blue;
-}
+// td:not(.column-index):focus-within,
+// td:not(.row-index):focus-within {
+//   border: 2px solid blue;
+// }
 td:not(.column-index):hover,
 td:not(.row-index):hover {
   cursor: grab;
@@ -42,7 +42,9 @@ td:first-child {
   line-height: 26px;
   user-select: none;
 }
-
+.focused {
+  border: 2px solid blue;
+}
 .selected {
   background-color: rgb(199, 199, 255);
 }

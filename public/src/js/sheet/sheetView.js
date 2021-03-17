@@ -1,21 +1,35 @@
 import { makeRowIndexHTML, makeShellHTML, td, tr } from './htmlTemplate.js';
 import SheetModel from './sheetModel';
-import Select from './feature/select';
-import { add } from '../util/util.js';
-const ASCII = {
-  A: 65,
-  Z: 90,
-};
-
+import SelectEvent from './feature/selectEvent.js';
+import { add, _ } from '../util/util.js';
+import KeyboardEvent from './feature/keyboardEvent.js';
+import InputEvent from './feature/inputEvent.js';
 class SheetView {
   constructor(sheet) {
     this.sheet = sheet;
     this.sheetModel = new SheetModel();
-    this.selectSheet;
+    this.cellNameBox = _.$('.namebox');
+    this.functionInput = _.$('.function-box>input');
   }
   init() {
     this.render();
-    this.selectSheet = new Select(this.sheet, this.sheetModel);
+    const keyboardEvent = new KeyboardEvent({
+      sheet: this.sheet,
+      model: this.sheetModel,
+      cellNameBox: this.cellNameBox,
+      functionInput: this.functionInput,
+    });
+    const inputEvent = new InputEvent({
+      sheet: this.sheet,
+      model: this.sheetModel,
+      cellNameBox: this.cellNameBox,
+      functionInput: this.functionInput,
+    });
+    const selectEvent = new SelectEvent({
+      sheet: this.sheet,
+      model: this.sheetModel,
+      cellNameBox: this.cellNameBox,
+    });
   }
   _makeColumnIndex() {
     const columnIndexList = this.sheetModel

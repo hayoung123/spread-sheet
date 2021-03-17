@@ -6,7 +6,10 @@ const ASCII = {
 class SheetModel {
   constructor() {
     this.maxRow = 50;
+    this.maxColumn = ASCII.Z - ASCII.A + 1;
     this.sheetData;
+    this.focusData;
+    this.selectData = []; //{cell,input} 형태로 저장
     this.init();
   }
   init() {
@@ -26,20 +29,51 @@ class SheetModel {
   //maxRow-row, totalColumn-column 만드는 메소드
   setsheetData() {
     //Max+1: column index 넣기 위한 자리 / total+1: row index 넣기 위한 자리
-    const totalColumn = ASCII.Z - ASCII.A + 1;
     this.sheetData = Array.from(Array(this.maxRow + 1), (_, idx) =>
-      new Array(totalColumn + 1).fill('').map((_, i) => (i ? '' : idx))
+      new Array(this.maxColumn + 1).fill('').map((_, i) => (i ? '' : idx))
     );
   }
   getSheetData() {
     return this.sheetData;
   }
-  setData(row, col, value) {
+  setData({ col, row, value }) {
     this.sheetData[row][col] = value;
-    return value;
   }
   getData(row, col) {
     return this.sheetData[row][col];
+  }
+  getSelectData() {
+    return this.selectData;
+  }
+  addSelectData(data) {
+    this.selectData.push(data); //{cell,input}
+  }
+  setSelectData(selectData) {
+    this.selectData = selectData; //[{cell,input},...]
+  }
+  clearSelectData() {
+    this.selectData = [];
+  }
+  getFirstData() {
+    if (!this.selectData.length) return null;
+    return this.selectData[0];
+  }
+  getLastData() {
+    if (!this.selectData.length) return null;
+    return this.selectData[this.selectData.length - 1];
+  }
+  setFocusData(focusData) {
+    this.focusData = focusData;
+  }
+  getFocusInput() {
+    if (!this.focusData) return null;
+    const { input: focusInput } = this.focusData;
+    return focusInput;
+  }
+  getFocusCell() {
+    if (!this.focusData) return null;
+    const { cell: focusCell } = this.focusData;
+    return focusCell;
   }
 }
 
