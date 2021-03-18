@@ -17,7 +17,7 @@ class InputEvent {
     this.sheet.addEventListener('input', this.handleSheetInput.bind(this));
   }
   handleFnInput({ target }) {
-    if (!this.sheetModel.getLastInput()) return;
+    if (!this.sheetModel.getFocusCell()) return;
     if (this._isFunction()) this._executeFunction();
     else this._setSheetInputValue();
   }
@@ -42,11 +42,11 @@ class InputEvent {
     return node.parentElement.tagName === 'TD';
   }
   _setFunctionInputValue() {
-    const selectInput = this.sheetModel.getLastInput();
+    const selectInput = this.sheetModel.getFocusInput();
     this.functionInput.value = selectInput.value;
   }
   _setSheetInputValue() {
-    const selectInput = this.sheetModel.getLastInput();
+    const selectInput = this.sheetModel.getFocusInput();
     selectInput.value = this.functionInput.value;
   }
   _isFunction() {

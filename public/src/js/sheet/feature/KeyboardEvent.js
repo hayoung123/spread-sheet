@@ -1,4 +1,5 @@
 import { _ } from '../../util/util';
+import { parseCellName } from '../util/parser';
 const KEYCODE = {
   TAB: 9,
   ENTER: 13,
@@ -23,6 +24,7 @@ class KeyboardEvent {
   }
   addEvent() {
     this.sheet.addEventListener('mousedown', this.handleMousedown.bind(this));
+    this.sheet.addEventListener('mouseup', this.handleMousedown.bind(this));
     this.functionInput.addEventListener('keydown', this.handleFnKeydown.bind(this));
     this.sheet.addEventListener('keydown', this.handleSheetKeydown.bind(this));
   }
@@ -31,21 +33,18 @@ class KeyboardEvent {
     this._focusCell(target);
   }
   handleSheetKeydown({ keyCode }) {
-    this._commonKeyboardEvent(keyCode);
+    this._clearSelectCell();
     if (keyCode === KEYCODE.DELETD) this._handleDelete();
     if (keyCode === KEYCODE.ENTER) this._handleMoveCell({ moveColumn: 0, moveRow: 1 });
-  }
-  handleFnKeydown({ keyCode }) {
-    if (!this.sheetModel.getFocusInput()) return;
-    this._commonKeyboardEvent(keyCode);
-    if (keyCode === KEYCODE.ENTER) this._handleMoveCell({ moveColumn: 0, moveRow: 0 });
-  }
-  _commonKeyboardEvent(keyCode) {
     if (keyCode === KEYCODE.TAB) this._handleMoveCell({ moveColumn: 1, moveRow: 0, isTab: true });
     if (keyCode === KEYCODE.LEFT) this._handleMoveCell({ moveColumn: -1, moveRow: 0 });
     if (keyCode === KEYCODE.RIGHT) this._handleMoveCell({ moveColumn: 1, moveRow: 0 });
     if (keyCode === KEYCODE.UP) this._handleMoveCell({ moveColumn: 0, moveRow: -1 });
     if (keyCode === KEYCODE.DOWN) this._handleMoveCell({ moveColumn: 0, moveRow: 1 });
+  }
+  handleFnKeydown({ keyCode }) {
+    if (!this.sheetModel.getFocusInput()) return;
+    if (keyCode === KEYCODE.ENTER) this._handleMoveCell({ moveColumn: 0, moveRow: 0 });
   }
   _handleMoveCell(column, row) {
     const selectCell = this.sheetModel.getFocusCell();
@@ -137,8 +136,7 @@ class KeyboardEvent {
   _setCellNameBox() {
     const selectCell = this.sheetModel.getFocusCell();
     const { column, row } = this._getLocation(selectCell);
-    const columnAsciiNum = 'A'.charCodeAt() + column * 1 - 1;
-    const cellName = String.fromCharCode(columnAsciiNum) + row;
+    const cellName = parseCellName(column, row);
     this.cellNameBox.innerHTML = cellName;
   }
   _setFunctionInput() {
@@ -149,6 +147,22 @@ class KeyboardEvent {
   _isIndexCell(node) {
     const nodeParent = node.parentElement;
     return node.classList.contains('row-index') || nodeParent.classList.contains('column-index');
+  }
+  _clearSelectCell() {
+    const selectData = this.sheetModel.getSelectData();
+    selectData.forEach(({ cell, input }) => {
+      this._removeSelected(cell);
+      this._removeSelected(input);
+      this._removeBorder(cell);
+    });
+    this.sheetModel.clearSelectData();
+  }
+  _removeSelected(node) {
+    node.classList.remove('selected');
+  }
+  _removeBorder(node) {
+    const solidBorderList = ['top-solid', 'bottom-solid', 'right-solid', 'left-solid'];
+    node.classList.remove(...solidBorderList);
   }
 }
 

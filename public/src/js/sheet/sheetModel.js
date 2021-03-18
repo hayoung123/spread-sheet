@@ -54,14 +54,6 @@ class SheetModel {
   clearSelectData() {
     this.selectData = [];
   }
-  getFirstData() {
-    if (!this.selectData.length) return null;
-    return this.selectData[0];
-  }
-  getLastData() {
-    if (!this.selectData.length) return null;
-    return this.selectData[this.selectData.length - 1];
-  }
   setFocusData(focusData) {
     this.focusData = focusData;
   }

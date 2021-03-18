@@ -14,17 +14,15 @@ td {
   line-height: 22px;
   input {
     border: none;
-    width: 95px;
-    height: 20px;
+    width: 90px;
+    height: 18px;
     padding: 3px;
     margin: 0px;
     cursor: default;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 }
-// td:not(.column-index):focus-within,
-// td:not(.row-index):focus-within {
-//   border: 2px solid blue;
-// }
 td:not(.column-index):hover,
 td:not(.row-index):hover {
   cursor: grab;
@@ -47,4 +45,29 @@ td:first-child {
 }
 .selected {
   background-color: rgb(199, 199, 255);
+}
+
+.top-solid {
+  border-top: 2px solid blue;
+}
+.right-solid {
+  border-right: 2px solid blue;
+}
+.left-solid {
+  border-left: 2px solid blue;
+}
+.bottom-solid {
+  border-bottom: 2px solid blue;
+}
+.top-dot {
+  border-top: 2px dotted blue;
+}
+.right-dot {
+  border-right: 2px dotted blue;
+}
+.left-dot {
+  border-left: 2px dotted blue;
+}
+.bottom-dot {
+  border-bottom: 2px dotted blue;
 }
