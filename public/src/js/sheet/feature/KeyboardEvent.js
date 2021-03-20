@@ -46,12 +46,13 @@ class KeyboardEvent {
     if (!this.sheetModel.getFocusInput()) return;
     if (keyCode === KEYCODE.ENTER) this._handleMoveCell({ moveColumn: 0, moveRow: 0 });
   }
-  _handleMoveCell(column, row) {
+  _handleMoveCell({ moveColumn, moveRow, isTab = false }) {
+    console.log({ moveColumn, moveRow, isTab });
     const selectCell = this.sheetModel.getFocusCell();
     const inputValue = this._getInputValue(selectCell);
     const { column: focusColumn, row: rowColumn } = this._getLocation(selectCell);
     this.sheetModel.setData({ column: focusColumn, row: rowColumn, value: inputValue });
-    this._moveFocusedCell(column, row);
+    this._moveFocusedCell({ moveColumn, moveRow, isTab });
     this._setCellNameBox();
     this._setFunctionInput();
   }
