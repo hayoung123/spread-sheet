@@ -1,24 +1,5 @@
-# fe-w6-free-style
+# Google 스프레드 시트
 
-## Feature list
+[프로젝트 정리 링크](https://velog.io/@proshy/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EC%8B%9C%ED%8A%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EC%9E%90)
 
-### sheet feature
 
-- [ ] 화살표로 칸 움직이기
-- [ ] 엔터치면 아래 칸으로 이동
-- [ ] 드래그 앤 드롭
-- [ ] border손 올릴 때 모양변경
-
-### button feature
-
-- [ ] bolder
-- [ ] 기울이기
-- [ ] 밑줄
-- [ ] 취소선
-- [ ] 채우기 색상
-- [ ] 테두리
-
-### function input
-
-- [ ] shell input과 function input 동기화 시키기
-- [ ] 함수 적용 (ADD, AVG, ....)
